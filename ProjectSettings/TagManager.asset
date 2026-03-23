@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -41,6 +41,30 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: LastBackground
+    uniqueID: 2478088803
+    locked: 0
+  - name: Front
+    uniqueID: 2264341233
+    locked: 0
+  - name: Background_1
+    uniqueID: 3054780753
+    locked: 0
+  - name: Front_1
+    uniqueID: 3888814511
+    locked: 0
+  - name: Background_2
+    uniqueID: 451874423
+    locked: 0
+  - name: Front_2
+    uniqueID: 4114697125
+    locked: 0
+  - name: Background_3
+    uniqueID: 3935506041
+    locked: 0
+  - name: Front_3
+    uniqueID: 2788839001
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
@@ -50,27 +74,3 @@ TagManager:
   - Light Layer 5
   - Light Layer 6
   - Light Layer 7
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 

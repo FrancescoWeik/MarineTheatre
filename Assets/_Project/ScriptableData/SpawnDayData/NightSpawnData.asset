@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b97de23bbc50e0b46acb662e2f7145dd, type: 3}
+  m_Name: NightSpawnData
+  m_EditorClassIdentifier: Assembly-CSharp::FishSpawnerDayStructure
+  highChanceFishSpawn:
+  - {fileID: 3725734406988263566, guid: 42af6d21044d8ae42acb4be4bf8e060c, type: 3}
+  mediumChanceFishSpawn:
+  - {fileID: 8915364438922915454, guid: b845f262c6002b947a1d7cc886574967, type: 3}
+  - {fileID: 3696909645189197282, guid: c32e26d34a684ab4c9334003327c7a08, type: 3}
+  - {fileID: 5730415983869251210, guid: d5e975fce1d4d014691e33265ce28356, type: 3}
+  lowChanceFishSpawn:
+  - {fileID: 3008968129083329175, guid: 3bfce2bcaf93e18428b97638e1188865, type: 3}
+  - {fileID: 5039139349514857924, guid: 81dd119d0f50afb4c92e9c9eb8df9a4f, type: 3}
+  - {fileID: 2115197091364929224, guid: 0315e316535c7c04791d98e23df934ec, type: 3}
+  highChancePercentage: 70
+  mediumChancePercentage: 20
+  lowChancePercentage: 10
