@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: -1466583138, guid: e8f897281693de8489638c8c7bde2b16, type: 3}
     - target: {fileID: 2340617026020715897, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: m_Name
-      value: Turtle Variant
+      value: Turtle
       objectReference: {fileID: 0}
     - target: {fileID: 3554163934317666702, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22,8 +22,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: fishPossibleMovements.Array.size
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: 'fishPossibleMovements.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: fedb6e310a84baf46b16074c188b52e9, type: 2}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: 'fishPossibleMovements.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 83409e51292352b4493b04e7e95f89e0, type: 2}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: 'fishPossibleMovements.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: ce7c080ee53ac504a96dc7c094072250, type: 2}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: 'fishPossibleMovements.Array.data[3]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 58958e37fc692d64887ad795d431db1a, type: 2}
     - target: {fileID: 8995940715840483997, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
