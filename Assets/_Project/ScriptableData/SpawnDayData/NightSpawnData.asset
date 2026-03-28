@@ -22,6 +22,7 @@ MonoBehaviour:
   - {fileID: 3008968129083329175, guid: 3bfce2bcaf93e18428b97638e1188865, type: 3}
   - {fileID: 5039139349514857924, guid: 81dd119d0f50afb4c92e9c9eb8df9a4f, type: 3}
   - {fileID: 2115197091364929224, guid: 0315e316535c7c04791d98e23df934ec, type: 3}
+  - {fileID: 6370633503109335736, guid: dacd37b471b24a647843427ae0b06c7a, type: 3}
   highChancePercentage: 70
   mediumChancePercentage: 20
   lowChancePercentage: 10

@@ -126,7 +126,7 @@ public class SpawnFishManager : MonoBehaviour
     }
 }
 
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(SpawnFishManager))] // Tells Unity this is for MyScript
 public class SpawnFishManagerEditor : Editor
 {
@@ -144,3 +144,4 @@ public class SpawnFishManagerEditor : Editor
         }
     }
 }
+#endif

@@ -21,6 +21,7 @@ MonoBehaviour:
   - {fileID: 3696909645189197282, guid: c32e26d34a684ab4c9334003327c7a08, type: 3}
   - {fileID: 5039139349514857924, guid: 81dd119d0f50afb4c92e9c9eb8df9a4f, type: 3}
   - {fileID: 3008968129083329175, guid: 3bfce2bcaf93e18428b97638e1188865, type: 3}
+  - {fileID: 6370633503109335736, guid: dacd37b471b24a647843427ae0b06c7a, type: 3}
   lowChanceFishSpawn:
   - {fileID: 3725734406988263566, guid: 42af6d21044d8ae42acb4be4bf8e060c, type: 3}
   highChancePercentage: 70
