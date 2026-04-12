@@ -17,7 +17,7 @@ MonoBehaviour:
   maxStartHeight: -18
   minStartHeight: -25
   maxSpeed: 3
-  minSpeed: 1.5
+  minSpeed: 1.8
   sortingLayer: 3
   completelyFrontToBeSeend: -17.5
   firstLayerHeightToBeSeen: -10.5
