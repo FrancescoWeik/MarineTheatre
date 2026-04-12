@@ -25,6 +25,9 @@ public class FishMovement : MonoBehaviour
     [SerializeField]  private float maxHeight = 0f;
     [SerializeField]  private float speed = 0f;
     [SerializeField]  private float curveLength;
+    private float rotationSpeed = 20f;
+    private float rotationMaxAngle = 10f;
+    private int currentRotationDirection = 1;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -56,6 +59,12 @@ public class FishMovement : MonoBehaviour
         curveLength = Random.Range(minCurveLength, maxCurveLength);
 
         transform.position = new Vector3(transform.position.x, minHeight, transform.position.z);
+
+        //Set rotation randomness
+        currentRotationDirection = Random.Range(1, 2);
+        rotationSpeed = Random.Range(8f, 10f);
+        rotationMaxAngle = 5f;
+
         StartCoroutine(MovementRoutine(direction));
     }
 
@@ -66,6 +75,8 @@ public class FishMovement : MonoBehaviour
 
         float amplitude = (maxHeight - minHeight) / 2f;
         float midPoint = (maxHeight + minHeight) / 2f;
+
+        float currentZ = transform.eulerAngles.z;
 
         while (elapsed < lifeTime)
         {
@@ -85,6 +96,33 @@ public class FishMovement : MonoBehaviour
             // This moves the object relative to where it started.
             //transform.localPosition = startPosition + new Vector3(xProgress, yOffset - (midPoint + amplitude), 0);ù
             transform.position = new Vector3(startPosition.x + xProgress, yOffset, startPosition.z);
+
+            //ROTATION
+            /*currentZ += currentRotationDirection * rotationSpeed * Time.deltaTime;
+
+            // Check if we hit the limit and flip the direction
+            if (currentZ >= rotationMaxAngle)
+            {
+                currentZ = rotationMaxAngle;
+                currentRotationDirection = -1;
+            }
+            else if (currentZ <= -rotationMaxAngle)
+            {
+                currentZ = -rotationMaxAngle;
+                currentRotationDirection = 1;
+            }
+
+            transform.rotation = Quaternion.Euler(0, 0, currentZ);*/
+
+            // 1. Calculate a 't' value that oscillates between -1 and 1
+            // We use 'elapsed' to keep it moving forward over time
+            float t = Mathf.Sin(elapsed * (rotationSpeed / 5f));
+
+            // 2. Multiply by your max angle
+            float zAngle = t * rotationMaxAngle;
+
+            // 3. Apply
+            transform.rotation = Quaternion.Euler(0, 0, zAngle);
 
             yield return null;
         }

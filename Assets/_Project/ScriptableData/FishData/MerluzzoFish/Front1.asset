@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Front1
   m_EditorClassIdentifier: Assembly-CSharp::FishMovementScriptable
   maxEndHeight: -1
-  minEndHeight: -5.5
+  minEndHeight: -4
   maxStartHeight: -9
   minStartHeight: -9.8
   maxSpeed: 3

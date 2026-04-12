@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca6bcc27a0156f469a456108eb0baeb, type: 3}
   m_Name: Front_1
   m_EditorClassIdentifier: Assembly-CSharp::FishMovementScriptable
-  maxEndHeight: -5
-  minEndHeight: -6.2
+  maxEndHeight: -3.5
+  minEndHeight: -5.5
   maxStartHeight: -7.6
   minStartHeight: -8
   maxSpeed: 4
