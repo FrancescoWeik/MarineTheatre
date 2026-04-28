@@ -79,25 +79,13 @@ public class BirdMovement : MonoBehaviour
             yield return null;
         }
 
-        // --- PHASE 2: THE RISE ---
-        /*elapsedTime = 0f;
-        float riseDuration = Mathf.Abs(dropPosition - bottomY) / speed;
 
-        while (elapsedTime < riseDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / riseDuration;
-            float tEaseOut = t * (2f - t);
-            float newY = Mathf.Lerp(bottomY, dropPosition, tEaseOut);
-            transform.localPosition = new Vector3(transform.localPosition.x, newY, transform.localPosition.z);
-            yield return null;
-        }
-        */
+
         // --- PHASE 3: THE BACK-AND-FORTH BOBBING ---
-        Vector3 centerPosition = transform.position;
+        Vector3 anchorLocalPos = transform.localPosition;
         float bobElapsed = 0f;
+        float rotationEaseInDuration = 1.5f; // How long it takes to reach full tilt intensity
 
-        // Adjust these to change the 'size' of the patrol area
         float horizontalAmplitude = curveLength / 2f;
         float verticalAmplitude = (maxHeight - minHeight) / 2f;
 
@@ -106,30 +94,36 @@ public class BirdMovement : MonoBehaviour
             bobElapsed += Time.deltaTime;
 
             // 1. Horizontal Oscillation
-            // We use Sin so it starts at 0 (the center) and moves outward
             float xOffset = Mathf.Sin(bobElapsed * speed) * horizontalAmplitude;
 
             // 2. Vertical Oscillation
-            // We use -Mathf.Cos and +1 so the wave starts at 0 and goes UP first
-            float yOffset = (-Mathf.Cos(bobElapsed * speed * 2f) + 1f) * verticalAmplitude;
+            float yOffset = Mathf.Sin(bobElapsed * speed * 2f) * verticalAmplitude;
 
             // 3. Apply Position
-            transform.position = new Vector3(
-                centerPosition.x + xOffset,
-                centerPosition.y + yOffset,
-                centerPosition.z
+            transform.localPosition = new Vector3(
+                anchorLocalPos.x + xOffset,
+                anchorLocalPos.y + yOffset,
+                anchorLocalPos.z
             );
 
-            // 4. Procedural Rotation (Leaning)
-            // horizontalVelocity is the derivative of Sin (which is Cos)
+            // 4. SEAMLESS ROTATION
+            // Calculate the target tilt as before
             float horizontalVelocity = Mathf.Cos(bobElapsed * speed);
-            float tilt = horizontalVelocity * rotationMaxAngle;
-            transform.rotation = Quaternion.Euler(0, 0, -tilt);
+            float targetTilt = horizontalVelocity * rotationMaxAngle;
 
-            // 5. Flip Visuals
-            // Flips the sprite scale based on which way it's currently moving
-            float scaleX = (horizontalVelocity >= 0) ? 1f : -1f;
-            //transform.localScale = new Vector3(scaleX, 1f, 1f);
+            // Calculate a multiplier that goes from 0 to 1 over 'rotationEaseInDuration'
+            float rotationIntensity = Mathf.Min(bobElapsed / rotationEaseInDuration, 1f);
+
+            // Apply the tilt scaled by the intensity
+            float currentTilt = targetTilt * rotationIntensity;
+            transform.localRotation = Quaternion.Euler(0, 0, -currentTilt);
+
+            // 5. Visual Flip (Only flip if intensity is high enough to look natural)
+            if (rotationIntensity > 0.5f)
+            {
+                float scaleX = (horizontalVelocity >= 0) ? 1f : -1f;
+                transform.localScale = new Vector3(-scaleX, 1f, 1f);
+            }
 
             yield return null;
         }
