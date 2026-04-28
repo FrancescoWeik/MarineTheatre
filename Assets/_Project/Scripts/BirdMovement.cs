@@ -77,15 +77,13 @@ public class BirdMovement : MonoBehaviour
 
         // RANDOMIZE START DIRECTION: 1 is Right, -1 is Left
         float startDirection = (Random.value > 0.5f) ? 1f : -1f;
-        float scaleX = startDirection;
-        transform.localScale = new Vector3(-scaleX * startDirection, 1f, 1f);
 
         while (bobElapsed < lifeTime)
         {
             bobElapsed += Time.deltaTime;
 
             // 1. Horizontal Oscillation
-            float xOffset = Mathf.Sin(bobElapsed * speed) * horizontalAmplitude * startDirection;
+            float xOffset = Mathf.Sin(bobElapsed * speed) * horizontalAmplitude;
 
             // 2. Vertical Oscillation
             float yOffset = Mathf.Sin(bobElapsed * speed * 2f) * verticalAmplitude;
@@ -112,8 +110,8 @@ public class BirdMovement : MonoBehaviour
             // 5. Visual Flip (Only flip if intensity is high enough to look natural)
             if (rotationIntensity > 0.5f)
             {
-                scaleX = (horizontalVelocity >= 0) ? 1f : -1f;
-                transform.localScale = new Vector3(-scaleX * startDirection, 1f, 1f);
+                float scaleX = (horizontalVelocity >= 0) ? 1f : -1f;
+                transform.localScale = new Vector3(-scaleX, 1f, 1f);
             }
 
             yield return null;

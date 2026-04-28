@@ -3965,7 +3965,7 @@ MonoBehaviour:
   - {fileID: 1953953975}
   minSpawnTime: 40
   maxSpawnTimeDelay: 80
-  maxSpawnAtATime: 5
+  maxSpawnAtATime: 3
   maxPossibleRotation: 10
   minFrenzyModeSpawnTime: 0.1
   maxFrenzyModeSpawnTime: 0.35

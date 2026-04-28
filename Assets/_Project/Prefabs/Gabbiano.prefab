@@ -93,17 +93,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abec3d7d8d5593f458a3d44e9ae34e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BirdMovement
-  maxCurveLength: 25
+  maxCurveLength: 18
   minCurveLength: 7
   minLifeTime: 5
   maxLifeTime: 15
-  minHeight: 5
+  minHeight: 8
   maxHeight: 13
-  minSpeed: 2.2
-  maxSpeed: 3.3
+  minSpeed: 1.8
+  maxSpeed: 2.7
   exitSpeedMultiplier: 3
   curveLength: 10
-  dropTime: 0.5
+  minDropTime: 0.3
+  maxDropTime: 0.6
   ricochetDropTime: 1
   maxYDrop: -32
   minYDrop: -19
