@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1553125973286987837}
   - component: {fileID: 4543548063482924792}
+  - component: {fileID: 4556473820299578213}
   m_Layer: 0
   m_Name: Gabbiano
   m_TagString: Untagged
@@ -80,6 +81,32 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 5.4096193, y: 2.434013}
   m_EdgeRadius: 0
+--- !u!114 &4556473820299578213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2590490035938713358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abec3d7d8d5593f458a3d44e9ae34e4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BirdMovement
+  maxCurveLength: 25
+  minCurveLength: 7
+  minLifeTime: 5
+  maxLifeTime: 15
+  minHeight: 5
+  maxHeight: 13
+  minSpeed: 2.2
+  maxSpeed: 3.3
+  exitSpeedMultiplier: 3
+  curveLength: 10
+  dropTime: 0.5
+  ricochetDropTime: 1
+  maxYDrop: -32
+  minYDrop: -19
 --- !u!1 &7271119429193170734
 GameObject:
   m_ObjectHideFlags: 0

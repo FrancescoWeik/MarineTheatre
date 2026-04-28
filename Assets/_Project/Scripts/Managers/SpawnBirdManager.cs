@@ -4,9 +4,9 @@ using UnityEditor; // Required for editor scripting
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnFishManager : MonoBehaviour
+public class SpawnBirdManager : MonoBehaviour
 {
-    //public static SpawnFishManager Instance { get; private set; }
+    //public static SpawnBirdManager Instance { get; private set; }
 
     [Header("Fish Spawn Day Data")]
     [SerializeField] private List<FishSpawnerDayStructure> fishSpawners = new List<FishSpawnerDayStructure>();
@@ -27,8 +27,10 @@ public class SpawnFishManager : MonoBehaviour
 
     private FishSpawnerDayStructure currentDaySpawner;
 
-    private float currentSpawnWaitTime = 0f;
+    private float currentSpawnWaitTime = 40f;
     private float spawnTimeElapsed = 0f;
+
+    private bool canSpawn = true;
 
     private void Awake()
     {
@@ -56,48 +58,40 @@ public class SpawnFishManager : MonoBehaviour
 
     private void Update()
     {
-        if(spawnTimeElapsed > currentSpawnWaitTime)
+        if (spawnTimeElapsed > currentSpawnWaitTime && canSpawn)
         {
             float numberToSpawn = Random.Range(0f, maxSpawnAtATime + 1);
 
-            for(int i=0; i < numberToSpawn; i++)
+            for (int i = 0; i < numberToSpawn; i++)
             {
                 //Get the spawn transform
-                int spawnContainerIndex = Random.Range(0, 2);
-                int direction = 1;
-                if (spawnContainerIndex == 0)
-                    direction = -1;
-
-                GameObject fish;
+                int spawnContainerIndex = Random.Range(0, spawnContainers.Length);
+                GameObject bird;
                 //Get the random fish prefab based on the day
                 float randomValue = Random.Range(0f, 100f);
                 if (randomValue < currentDaySpawner.lowChancePercentage)
                 {
                     //Spawn low chance fish
                     int index = Random.Range(0, currentDaySpawner.lowChanceFishSpawn.Count);
-                    fish = Instantiate(currentDaySpawner.lowChanceFishSpawn[index], spawnContainers[spawnContainerIndex]);
-                    fish.GetComponent<FishMovement>().StartMoving(direction);
+                    bird = Instantiate(currentDaySpawner.lowChanceFishSpawn[index], spawnContainers[spawnContainerIndex]);
                 }
                 else if (randomValue < currentDaySpawner.mediumChancePercentage)
                 {
                     //Spawn medium chance fish
                     //Spawn low chance fish
                     int index = Random.Range(0, currentDaySpawner.mediumChanceFishSpawn.Count);
-                    fish = Instantiate(currentDaySpawner.mediumChanceFishSpawn[index], spawnContainers[spawnContainerIndex]);
-                    fish.GetComponent<FishMovement>().StartMoving(direction);
+                    bird = Instantiate(currentDaySpawner.mediumChanceFishSpawn[index], spawnContainers[spawnContainerIndex]);
                 }
                 else
                 {
                     //Spawn high chance fish
                     //Spawn low chance fish
                     int index = Random.Range(0, currentDaySpawner.highChanceFishSpawn.Count);
-                    fish = Instantiate(currentDaySpawner.highChanceFishSpawn[index], spawnContainers[spawnContainerIndex]);
-                    fish.GetComponent<FishMovement>().StartMoving(direction);
+                    bird = Instantiate(currentDaySpawner.highChanceFishSpawn[index], spawnContainers[spawnContainerIndex]);
                 }
 
-                fish.transform.localRotation = Quaternion.Euler(fish.transform.localRotation.x, fish.transform.localRotation.y, Random.Range(-maxPossibleRotation, maxPossibleRotation));
             }
-          
+
             if (!frenzyMode)
                 currentSpawnWaitTime = Random.Range(minSpawnTime, maxSpawnTimeDelay);
             else
@@ -125,23 +119,3 @@ public class SpawnFishManager : MonoBehaviour
         }
     }
 }
-
-#if UNITY_EDITOR
-[CustomEditor(typeof(SpawnFishManager))] // Tells Unity this is for MyScript
-public class SpawnFishManagerEditor : Editor
-{
-    public override void OnInspectorGUI()
-    {
-        // Draw the default inspector fields (variables like 'speed', etc.)
-        DrawDefaultInspector();
-
-        SpawnFishManager myScript = (SpawnFishManager)target;
-
-        // Create the button
-        if (GUILayout.Button("EnableDisable FrenzyMode"))
-        {
-            myScript.ChangeFrenzyMode();
-        }
-    }
-}
-#endif
