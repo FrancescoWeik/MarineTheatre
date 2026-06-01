@@ -14,15 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishSpawnerDayStructure
   highChanceFishSpawn:
   - {fileID: 3725734406988263566, guid: 42af6d21044d8ae42acb4be4bf8e060c, type: 3}
+  - {fileID: 2566770709013530403, guid: de8ef9aa83cbdb846ba746079097244d, type: 3}
   mediumChanceFishSpawn:
   - {fileID: 8915364438922915454, guid: b845f262c6002b947a1d7cc886574967, type: 3}
   - {fileID: 3696909645189197282, guid: c32e26d34a684ab4c9334003327c7a08, type: 3}
-  - {fileID: 5730415983869251210, guid: d5e975fce1d4d014691e33265ce28356, type: 3}
+  - {fileID: 8485613178546865693, guid: dcea636f02f97a94289c33e3e4044fb3, type: 3}
   lowChanceFishSpawn:
   - {fileID: 3008968129083329175, guid: 3bfce2bcaf93e18428b97638e1188865, type: 3}
-  - {fileID: 5039139349514857924, guid: 81dd119d0f50afb4c92e9c9eb8df9a4f, type: 3}
   - {fileID: 2115197091364929224, guid: 0315e316535c7c04791d98e23df934ec, type: 3}
   - {fileID: 6370633503109335736, guid: dacd37b471b24a647843427ae0b06c7a, type: 3}
-  highChancePercentage: 70
-  mediumChancePercentage: 20
+  - {fileID: 1492830055260985517, guid: 763dc5ff0881b1345bd9070db908e316, type: 3}
+  highChancePercentage: 60
+  mediumChancePercentage: 30
   lowChancePercentage: 10
