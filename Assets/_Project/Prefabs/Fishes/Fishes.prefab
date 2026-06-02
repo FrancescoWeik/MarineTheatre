@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -19.09
       objectReference: {fileID: 0}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: fishGeneralData
+      value: 
+      objectReference: {fileID: 11400000, guid: f3ed3a41599c57c4c91cbac316e32942, type: 2}
     - target: {fileID: 5553099834791432165, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0

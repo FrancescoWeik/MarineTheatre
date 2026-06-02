@@ -17,6 +17,10 @@ PrefabInstance:
       value: Seppia Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: fishGeneralData
+      value: 
+      objectReference: {fileID: 11400000, guid: f6af6d5812a4f314b9e33cc302fe1c1b, type: 2}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: fishPossibleMovements.Array.size
       value: 3
       objectReference: {fileID: 0}

@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SpritesheetTest_0
+      name: Wood
       rect:
         serializedVersion: 2
         x: 214
@@ -158,10 +158,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_1
+      name: Cloud_2
       rect:
         serializedVersion: 2
-        x: 341
+        x: 345
         y: 2076
         width: 540
         height: 245
@@ -180,7 +180,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_2
+      name: Moon
       rect:
         serializedVersion: 2
         x: 918
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_3
+      name: FullMoon
       rect:
         serializedVersion: 2
         x: 1263
@@ -224,7 +224,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_4
+      name: IcelandicCod
       rect:
         serializedVersion: 2
         x: 520
@@ -246,7 +246,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_7
+      name: Cloud
       rect:
         serializedVersion: 2
         x: 1202
@@ -268,7 +268,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_9
+      name: Sun
       rect:
         serializedVersion: 2
         x: 293
@@ -290,7 +290,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_10
+      name: whale
       rect:
         serializedVersion: 2
         x: 930
@@ -312,7 +312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_11
+      name: Ship
       rect:
         serializedVersion: 2
         x: 45
@@ -334,7 +334,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_12
+      name: lamp
       rect:
         serializedVersion: 2
         x: 1231
@@ -378,7 +378,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_21
+      name: Jellyfish
       rect:
         serializedVersion: 2
         x: 1091
@@ -400,11 +400,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_28
+      name: RedFish
       rect:
         serializedVersion: 2
         x: 405
-        y: 322
+        y: 324
         width: 227
         height: 203
       alignment: 0
@@ -422,7 +422,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: SpritesheetTest_32
+      name: Fishes
       rect:
         serializedVersion: 2
         x: 692
@@ -496,7 +496,7 @@ TextureImporter:
         width: 442
         height: 340
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -525,13 +525,17 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":2,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
+      Cloud: -561187353
+      Cloud_2: -492143940
+      Fishes: -2009818346
+      FullMoon: -1256004058
       Gabbiano: 1832377435
+      IcelandicCod: -590804355
+      Jellyfish: -1009211434
+      Moon: 326815916
       PufferFish: 447014267
-      SpritesheetTest_0: -1652668536
-      SpritesheetTest_1: -492143940
-      SpritesheetTest_10: -1765298150
-      SpritesheetTest_11: 1065355985
-      SpritesheetTest_12: 1637600919
+      RedFish: -1591817938
+      Ship: 1065355985
       SpritesheetTest_13: 2022271533
       SpritesheetTest_14: -1312231143
       SpritesheetTest_15: -248522336
@@ -539,30 +543,26 @@ TextureImporter:
       SpritesheetTest_17: -1937572218
       SpritesheetTest_18: -605295180
       SpritesheetTest_19: 884172248
-      SpritesheetTest_2: 326815916
       SpritesheetTest_20: -278476898
-      SpritesheetTest_21: -1009211434
       SpritesheetTest_22: 1101210329
       SpritesheetTest_23: -111749249
       SpritesheetTest_24: 57352659
       SpritesheetTest_25: 38834540
       SpritesheetTest_26: -1308235672
       SpritesheetTest_27: -1561373078
-      SpritesheetTest_28: -1591817938
       SpritesheetTest_29: -1225052512
-      SpritesheetTest_3: -1256004058
       SpritesheetTest_30: 1001538325
       SpritesheetTest_31: 196098406
-      SpritesheetTest_32: -2009818346
       SpritesheetTest_33: 526008161
       SpritesheetTest_34: -889635111
       SpritesheetTest_35: -1962604252
-      SpritesheetTest_4: -590804355
       SpritesheetTest_5: 1247850642
-      SpritesheetTest_7: -561187353
       SpritesheetTest_8: -1981974051
-      SpritesheetTest_9: -205123597
+      Sun: -205123597
       Turtle: 1363068942
+      Wood: -1652668536
+      lamp: 1637600919
+      whale: -1765298150
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

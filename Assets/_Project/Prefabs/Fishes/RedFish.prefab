@@ -21,6 +21,10 @@ PrefabInstance:
       value: -19.16
       objectReference: {fileID: 0}
     - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: fishGeneralData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7773b6ac9927cea4284bf87902bf6a42, type: 2}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: fishPossibleMovements.Array.size
       value: 3
       objectReference: {fileID: 0}

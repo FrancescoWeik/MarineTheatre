@@ -1,0 +1,657 @@
+fileFormatVersion: 2
+guid: 0c44db6bb048e4f41ad59b2615d0f1ee
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Container
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 1964
+        width: 384
+        height: 387
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76d4354caf1f7b44f98511b2361fbead
+      internalID: 1243114825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tende
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 1987
+        width: 326
+        height: 330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f370ae3876154d343a9f338ba76c04e9
+      internalID: -1018043967
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Background\xF9"
+      rect:
+        serializedVersion: 2
+        x: 1209
+        y: 2001
+        width: 294
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10a4915795f2c9f4fb278e9484df9f5d
+      internalID: 380338679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lente
+      rect:
+        serializedVersion: 2
+        x: 899
+        y: 2041
+        width: 196
+        height: 226
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 842f66b04bd553b4a95805a6a79536e9
+      internalID: -768920060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anguilla
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1648
+        width: 248
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fb1ad5dbd214ff44a3b22c1e1176716
+      internalID: 1770067996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: whale
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 1638
+        width: 263
+        height: 256
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4d906fef36d5064c8f49350d5f9bb63
+      internalID: -733479470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pufferfish
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 1630
+        width: 259
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e69670d104cfa74988f18972d0c3b5b
+      internalID: -345421008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cod
+      rect:
+        serializedVersion: 2
+        x: 912
+        y: 1637
+        width: 274
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e96a7462ff9cea643b314fd108b63420
+      internalID: 1222203422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: turtle
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 1644
+        width: 282
+        height: 127
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 786d5b72c4d2b024a831ae247fbe992a
+      internalID: 835642074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: jellyfish
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 1356
+        width: 280
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222eac6474933e8498c63e04d4d08004
+      internalID: -1789912867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: crab
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 1357
+        width: 253
+        height: 189
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 614d91b7c050ba948ab50cb3f1734aec
+      internalID: -740934587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: lamp
+      rect:
+        serializedVersion: 2
+        x: 734
+        y: 1354
+        width: 259
+        height: 185
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cdb1e62c6865794fb76ac3215b33456
+      internalID: 864828496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: redfish
+      rect:
+        serializedVersion: 2
+        x: 1021
+        y: 1378
+        width: 227
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b51b455064a19469c4c71b3ce54823
+      internalID: 1240278615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fishes
+      rect:
+        serializedVersion: 2
+        x: 1293
+        y: 1358
+        width: 264
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6b035edbff5e5b478835000b5017584
+      internalID: 1219358573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: seppia
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1063
+        width: 161
+        height: 238
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ebf2e0bd60e234f9784f9268f016e9
+      internalID: 409118883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pulp
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 1071
+        width: 266
+        height: 230
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d70c0cb2a5ebf049a6268fdaec142c2
+      internalID: -247108174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FishesShop_62
+      rect:
+        serializedVersion: 2
+        x: 1027
+        y: 1071
+        width: 241
+        height: 240
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cc643d6d0e0354459ac7496f42a7bd5
+      internalID: -1876454342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: gabbiano
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 1064
+        width: 266
+        height: 232
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c35378ce48c57440a530238cdfae2d2
+      internalID: -80648607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackgroundEmpty
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 742
+        width: 302
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46fe2aaf1b94b5a488eac7992d97eca0
+      internalID: 155782919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d5391da3b45b90940ad7105f56f47dca
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      BackgroundEmpty: 155782919
+      "Background\xF9": 380338679
+      Cod: 1222203422
+      Container: 1243114825
+      FishesShop_1: -2045000165
+      FishesShop_10: 1270121492
+      FishesShop_11: 91416158
+      FishesShop_12: 350070752
+      FishesShop_13: -829504745
+      FishesShop_14: 1567552393
+      FishesShop_15: -1857341853
+      FishesShop_17: 1207063799
+      FishesShop_19: -188502918
+      FishesShop_2: -738538079
+      FishesShop_20: -2048925197
+      FishesShop_21: 907341830
+      FishesShop_22: -1966597905
+      FishesShop_25: -646672356
+      FishesShop_27: -1360452667
+      FishesShop_28: 1834073609
+      FishesShop_29: 1333015974
+      FishesShop_30: -2106595859
+      FishesShop_31: -113982575
+      FishesShop_32: 1525845319
+      FishesShop_33: 1383257435
+      FishesShop_34: 1171865686
+      FishesShop_35: 654049181
+      FishesShop_36: -1951580257
+      FishesShop_37: 1181197029
+      FishesShop_38: 1379963898
+      FishesShop_39: 1007324301
+      FishesShop_40: -2119888012
+      FishesShop_41: -67390430
+      FishesShop_43: -1460108489
+      FishesShop_45: 2020346884
+      FishesShop_48: -562859320
+      FishesShop_49: 1342114482
+      FishesShop_5: -1269016783
+      FishesShop_51: -1925856421
+      FishesShop_52: 1476264471
+      FishesShop_53: 654763522
+      FishesShop_54: 2031611055
+      FishesShop_55: -1054489100
+      FishesShop_56: -1747444734
+      FishesShop_57: 1234132187
+      FishesShop_58: 1244964547
+      FishesShop_6: 1867797572
+      FishesShop_61: 1036155951
+      FishesShop_62: -1876454342
+      FishesShop_63: 80855434
+      FishesShop_64: -1117576288
+      FishesShop_66: -148197229
+      FishesShop_67: 1834969681
+      FishesShop_68: 862787340
+      FishesShop_69: -2060485376
+      FishesShop_70: 593934359
+      FishesShop_71: 437894930
+      FishesShop_72: -1531711870
+      FishesShop_73: -1456030141
+      FishesShop_74: 977368766
+      FishesShop_75: 1382157282
+      FishesShop_76: 2024454657
+      FishesShop_77: -579554645
+      FishesShop_78: -909684508
+      FishesShop_79: -828416339
+      FishesShop_8: -1652989728
+      FishesShop_9: 998546773
+      Pufferfish: -345421008
+      Tende: -1018043967
+      anguilla: 1770067996
+      crab: -740934587
+      fishes: 1219358573
+      gabbiano: -80648607
+      jellyfish: -1789912867
+      lamp: 864828496
+      lente: -768920060
+      pulp: -247108174
+      redfish: 1240278615
+      seppia: 409118883
+      turtle: 835642074
+      whale: -733479470
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

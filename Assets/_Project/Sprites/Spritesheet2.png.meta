@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Spritesheet2_0
+      name: Pulp
       rect:
         serializedVersion: 2
         x: 427
@@ -158,7 +158,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet2_2
+      name: Crab
       rect:
         serializedVersion: 2
         x: 930
@@ -180,10 +180,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet2_3
+      name: Seppia
       rect:
         serializedVersion: 2
-        x: 112
+        x: 110
         y: 1812
         width: 266
         height: 406
@@ -202,7 +202,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet2_9
+      name: Anguilla
       rect:
         serializedVersion: 2
         x: 98
@@ -239,16 +239,16 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Spritesheet2_0: 1157133777
+      Anguilla: 1995778237
+      Crab: -810345928
+      Pulp: 1157133777
+      Seppia: 15451329
       Spritesheet2_1: -1177653519
-      Spritesheet2_2: -810345928
-      Spritesheet2_3: 15451329
       Spritesheet2_4: 1101524264
       Spritesheet2_5: 303913141
       Spritesheet2_6: 47662892
       Spritesheet2_7: 845820045
       Spritesheet2_8: -2147224267
-      Spritesheet2_9: 1995778237
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

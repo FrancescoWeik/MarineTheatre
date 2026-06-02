@@ -1,10 +1,15 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.Rendering;
 
-public class FishMovement : MonoBehaviour
+public class FishMovement : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField] private FishGeneralDataScriptable fishGeneralData;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private GameObject unlockPrefab;
+
     [Header("Length values, Values randomized, same randoms for all fishes")]
     [Tooltip("The max curve length for a single curve should be: 7f")]
     [SerializeField] public float maxCurveLength = 20f;
@@ -29,10 +34,18 @@ public class FishMovement : MonoBehaviour
     private float rotationMaxAngle = 10f;
     private int currentRotationDirection = 1;
 
+    private IEnumerator rotateRoutine;
+    [SerializeField] private float angleRange = 15f;
+    [SerializeField] private float rotationRoutineSpeed = 80f;
+    [SerializeField] private float pingPongDuration = 0.8f;
+    private Quaternion standardSpriteRotation;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        rotationRoutineSpeed = 80f;
+        pingPongDuration = 1.5f;
     }
 
     public void StartMoving(int direction)
@@ -65,6 +78,7 @@ public class FishMovement : MonoBehaviour
         rotationSpeed = Random.Range(8f, 10f);
         rotationMaxAngle = 5f;
 
+        standardSpriteRotation = spriteRenderer.transform.localRotation;
         StartCoroutine(MovementRoutine(direction));
     }
 
@@ -94,7 +108,7 @@ public class FishMovement : MonoBehaviour
 
             // 3. Apply the movement
             // This moves the object relative to where it started.
-            //transform.localPosition = startPosition + new Vector3(xProgress, yOffset - (midPoint + amplitude), 0);�
+            //transform.localPosition = startPosition + new Vector3(xProgress, yOffset - (midPoint + amplitude), 0);ù
             transform.position = new Vector3(startPosition.x + xProgress, yOffset, startPosition.z);
 
             //ROTATION
@@ -127,5 +141,57 @@ public class FishMovement : MonoBehaviour
             yield return null;
         }
         Destroy(this.gameObject);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.LogError("Fish clicked");
+
+        //Check not unlocked first....
+
+        //If not unlocked then spawn the effect for the unlock part
+        /*GameObject unlockedGO = Instantiate(unlockPrefab);
+        unlockedGO.transform.position = spriteRenderer.transform.position;
+        unlockedGO.transform.rotation = spriteRenderer.transform.rotation;
+        unlockedGO.GetComponent<UnlockFishEffect>().SetSprite(fishGeneralData.inPlaySprite);*/
+
+        //Unlock fish, do animation for that fish
+        if (rotateRoutine != null)
+        {
+            StopCoroutine(rotateRoutine);
+        }
+        rotateRoutine = RotateSpriteRoutine();
+        StartCoroutine(rotateRoutine);
+    }
+
+    private IEnumerator RotateSpriteRoutine()
+    {
+        Quaternion startRot = standardSpriteRotation;
+
+        float[] angles = new float[] { -15f, 15f, -7f, 7f, -4f, 0f };
+
+        for (int i = 0; i < angles.Length; i++)
+        {
+            // Speed decays from full to near zero as we go through the bounces
+            float decayFactor = 1f - (float)i / angles.Length; // 1.0 → 0.16
+            float currentSpeed = Mathf.Max(rotationRoutineSpeed * decayFactor, 5f); // clamp to avoid 0
+
+            Quaternion targetRot = startRot * Quaternion.Euler(0f, 0f, angles[i]);
+            Quaternion fromRot = spriteRenderer.transform.localRotation;
+            float duration = Quaternion.Angle(fromRot, targetRot) / currentSpeed;
+
+            float elapsed = 0f;
+            while (elapsed < duration)
+            {
+                elapsed += Time.deltaTime;
+                float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration));
+                spriteRenderer.transform.localRotation = Quaternion.Lerp(fromRot, targetRot, t);
+                yield return null;
+            }
+
+            spriteRenderer.transform.localRotation = targetRot;
+        }
+
+        spriteRenderer.transform.localRotation = startRot;
     }
 }

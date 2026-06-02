@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LampFish
       objectReference: {fileID: 0}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: fishGeneralData
+      value: 
+      objectReference: {fileID: 11400000, guid: cd55ade1ccdca474a91d1932a3030bc9, type: 2}
     - target: {fileID: 8995940715840483997, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

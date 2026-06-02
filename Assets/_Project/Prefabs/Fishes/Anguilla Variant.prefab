@@ -17,6 +17,10 @@ PrefabInstance:
       value: Anguilla Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
+      propertyPath: fishGeneralData
+      value: 
+      objectReference: {fileID: 11400000, guid: 467cee817464bb348ba0598bbf23e1a4, type: 2}
+    - target: {fileID: 4822487116339513697, guid: efa8fbc43d1ebd141a8b435eb86d5050, type: 3}
       propertyPath: fishPossibleMovements.Array.size
       value: 3
       objectReference: {fileID: 0}
