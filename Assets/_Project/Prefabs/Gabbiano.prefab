@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abec3d7d8d5593f458a3d44e9ae34e4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BirdMovement
+  birdData: {fileID: 11400000, guid: 5c3e3dcb442d4ff418b645b6f143017b, type: 2}
   maxCurveLength: 18
   minCurveLength: 7
   minLifeTime: 5
@@ -108,6 +109,9 @@ MonoBehaviour:
   ricochetDropTime: 1
   maxYDrop: -32
   minYDrop: -19
+  spriteRenderer: {fileID: 6992658708014301067}
+  angleRange: 15
+  rotationRoutineSpeed: 80
 --- !u!1 &7271119429193170734
 GameObject:
   m_ObjectHideFlags: 0

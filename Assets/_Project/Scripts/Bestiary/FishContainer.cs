@@ -15,6 +15,7 @@ public class FishContainer : MonoBehaviour, IPointerClickHandler
     [SerializeField] private float curtainsSpeed = 15f;
 
 
+    public string Title;
     private bool unlocked = false;
     private bool hidden = true;
 
@@ -37,6 +38,17 @@ public class FishContainer : MonoBehaviour, IPointerClickHandler
     public void SetFishImage(Sprite sprite)
     {
         unlockedSprite.sprite = sprite;
+    }
+
+    public void SetFishTitle(string title)
+    {
+        Title = title;
+    }
+
+    public void DisplayUnlocked()
+    {
+        lockedSprite.gameObject.SetActive(false);
+        unlockedSprite.gameObject.SetActive(true);
     }
 
     private IEnumerator ShowHideCurtains(Vector2 start, Vector2 to)

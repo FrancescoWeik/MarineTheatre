@@ -37,7 +37,6 @@ public class FishMovement : MonoBehaviour, IPointerClickHandler
     private IEnumerator rotateRoutine;
     [SerializeField] private float angleRange = 15f;
     [SerializeField] private float rotationRoutineSpeed = 80f;
-    [SerializeField] private float pingPongDuration = 0.8f;
     private Quaternion standardSpriteRotation;
 
 
@@ -45,7 +44,6 @@ public class FishMovement : MonoBehaviour, IPointerClickHandler
     void Start()
     {
         rotationRoutineSpeed = 80f;
-        pingPongDuration = 1.5f;
     }
 
     public void StartMoving(int direction)
@@ -145,15 +143,13 @@ public class FishMovement : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.LogError("Fish clicked");
-
         //Check not unlocked first....
+        bool wasClicked = SaveSystem.GetItemClicked(fishGeneralData.title);
+        if (!wasClicked)
+        {
+            SaveSystem.SetItemClicked(fishGeneralData.title, true);
 
-        //If not unlocked then spawn the effect for the unlock part
-        /*GameObject unlockedGO = Instantiate(unlockPrefab);
-        unlockedGO.transform.position = spriteRenderer.transform.position;
-        unlockedGO.transform.rotation = spriteRenderer.transform.rotation;
-        unlockedGO.GetComponent<UnlockFishEffect>().SetSprite(fishGeneralData.inPlaySprite);*/
+        }
 
         //Unlock fish, do animation for that fish
         if (rotateRoutine != null)

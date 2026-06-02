@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 
 public class CloudClick : MonoBehaviour, IPointerClickHandler
 {
+    [SerializeField] private FishGeneralDataScriptable cloudGeneralData;
     [SerializeField] private GameObject cloud;
     [SerializeField] private float destructionGetBigTime = 0.2f;
     [SerializeField] private float cloudDestructionTime = 0.4f;
@@ -14,6 +15,16 @@ public class CloudClick : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+
+
+        //Check not unlocked first....
+        bool wasClicked = SaveSystem.GetItemClicked(cloudGeneralData.title);
+        if (!wasClicked)
+        {
+            SaveSystem.SetItemClicked(cloudGeneralData.title, true);
+
+        }
+
         if (!animating)
         {
             StartCoroutine(CloudPop());

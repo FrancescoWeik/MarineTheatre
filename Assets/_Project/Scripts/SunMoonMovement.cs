@@ -16,6 +16,7 @@ public class SunMoonMovement : MonoBehaviour, IPointerEnterHandler, IPointerExit
     [SerializeField] private Collider2D coll;
     [SerializeField] private Transform sunMoonContainer;
     [SerializeField] private List<GameObject> sunMoonObjects = new List<GameObject>();
+    [SerializeField] private List<FishGeneralDataScriptable> daysDataList = new List<FishGeneralDataScriptable>();
 
 
     [SerializeField] private float yUpTarget = 11f;
@@ -37,6 +38,13 @@ public class SunMoonMovement : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        bool wasClicked = SaveSystem.GetItemClicked(daysDataList[currentActive].title);
+        if (!wasClicked)
+        {
+            SaveSystem.SetItemClicked(daysDataList[currentActive].title, true);
+
+        }
+
         //Debug.LogError("Pointer click");
         ChangeDay();
     }
