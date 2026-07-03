@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishGeneralDataScriptable
   inPlaySprite: {fileID: 1995778237, guid: 7ab462cf5ae8279429356c159fcac61e, type: 3}
   marketSprite: {fileID: 1770067996, guid: 0c44db6bb048e4f41ad59b2615d0f1ee, type: 3}
-  stickYOffset: -288
+  stickYOffset: -270
   description: 
   title: Anguilla
