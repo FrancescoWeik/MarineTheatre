@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishGeneralDataScriptable
   inPlaySprite: {fileID: 1157133777, guid: 7ab462cf5ae8279429356c159fcac61e, type: 3}
   marketSprite: {fileID: -247108174, guid: 0c44db6bb048e4f41ad59b2615d0f1ee, type: 3}
+  stickYOffset: -400
   description: 
   title: Polpo

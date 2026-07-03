@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishGeneralDataScriptable
   inPlaySprite: {fileID: -1256004058, guid: e8f897281693de8489638c8c7bde2b16, type: 3}
   marketSprite: {fileID: 1999761769, guid: 0c44db6bb048e4f41ad59b2615d0f1ee, type: 3}
+  stickYOffset: -400
   description: 
   title: Luna piena
