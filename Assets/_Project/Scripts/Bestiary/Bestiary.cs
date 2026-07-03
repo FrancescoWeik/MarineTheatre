@@ -48,7 +48,6 @@ public class Bestiary : MonoBehaviour
 
     public void OpenBestiary()
     {
-        Debug.LogError("Open bestiary, now close curtains...");
         bestiaryButton.enabled = false;
         Curtains.Instance.onFinishClosing.AddListener(DisplayBestiary);
         Curtains.Instance.CloseCurtains();
@@ -74,7 +73,7 @@ public class Bestiary : MonoBehaviour
 
     public void CloseBestiaru()
     {
-        Debug.LogError("Close bestiary, now close curtains...");
+        //Debug.LogError("Close bestiary, now close curtains...");
         backButton.enabled = false;
         Curtains.Instance.onFinishClosing.AddListener(HideBestiary);
         Curtains.Instance.CloseCurtains();

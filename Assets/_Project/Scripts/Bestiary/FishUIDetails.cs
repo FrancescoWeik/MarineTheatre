@@ -7,6 +7,8 @@ public class FishUIDetails : MonoBehaviour
     [SerializeField] private Image stickImage;
 
     public void SetFishData(FishGeneralDataScriptable fishData) {
+
+        //set the inplay sprite so thata the shop shows all the different fish images
         fishImage.sprite = fishData.inPlaySprite;
         RectTransform rectTransform = stickImage.GetComponent<RectTransform>();
 
