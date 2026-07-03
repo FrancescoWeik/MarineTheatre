@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -18,9 +19,15 @@ public class FishContainer : MonoBehaviour, IPointerClickHandler
     public string Title;
     private bool unlocked = false;
     private bool hidden = true;
+    private FishGeneralDataScriptable FishData;
+    public UnityEvent<FishGeneralDataScriptable> onFishDetails;
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if(!hidden && unlocked)
+        {
+            onFishDetails?.Invoke(FishData);
+        }
         if (hidden)
         {
             StopAllCoroutines();
@@ -33,6 +40,11 @@ public class FishContainer : MonoBehaviour, IPointerClickHandler
             hidden = true;
             StartCoroutine(ShowHideCurtains(curtains.anchoredPosition, startCurtainsPosition));
         }
+    }
+
+    public void SetFishData(FishGeneralDataScriptable fishData)
+    {
+        FishData = fishData;
     }
 
     public void SetFishImage(Sprite sprite)
@@ -49,6 +61,7 @@ public class FishContainer : MonoBehaviour, IPointerClickHandler
     {
         lockedSprite.gameObject.SetActive(false);
         unlockedSprite.gameObject.SetActive(true);
+        unlocked = true;
     }
 
     private IEnumerator ShowHideCurtains(Vector2 start, Vector2 to)

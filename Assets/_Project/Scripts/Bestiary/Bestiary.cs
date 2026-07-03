@@ -11,6 +11,7 @@ public class Bestiary : MonoBehaviour
     [SerializeField] private Button backButton;
     FishGeneralDataScriptable[] allFishesData;
     private List<FishContainer> fishContainers = new List<FishContainer>();
+    [SerializeField] private FishUIDetails fishDetails;
     private Canvas bestiaryCanvas;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -24,6 +25,7 @@ public class Bestiary : MonoBehaviour
 
             GameObject fishBestiaryEntry = Instantiate(fishBestiaryPrefab, fishGridContainer);
             FishContainer entryComponent = fishBestiaryEntry.GetComponent<FishContainer>();
+            entryComponent.SetFishData(fishData);
             entryComponent.SetFishImage(fishData.marketSprite);
             entryComponent.SetFishTitle(fishData.title);
 
@@ -33,8 +35,15 @@ public class Bestiary : MonoBehaviour
                 entryComponent.DisplayUnlocked();
             }
 
+            entryComponent.onFishDetails.AddListener(DisplayFishDetails);
             fishContainers.Add(entryComponent);
         }
+    }
+
+    public void DisplayFishDetails(FishGeneralDataScriptable _fishData)
+    {
+        fishDetails.gameObject.SetActive(true);
+        fishDetails.SetFishData(_fishData);
     }
 
     public void OpenBestiary()
