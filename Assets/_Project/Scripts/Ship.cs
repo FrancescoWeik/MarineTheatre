@@ -1,44 +1,82 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Ship : MonoBehaviour, IPointerClickHandler
+public class Ship : MonoBehaviour, IPointerClickHandler, ISerializationCallbackReceiver
 {
-    [SerializeField] private FishGeneralDataScriptable shipData;
-    [SerializeField]
-    private SpriteRenderer spriteRenderer;
+    // One entry per look of the vehicle (Ship, Jeep...): the active one rotates and unlocks its own bestiary data
+    [System.Serializable]
+    private class Vehicle
+    {
+        public SpriteRenderer spriteRenderer;
+        public FishGeneralDataScriptable data;
+        [System.NonSerialized] public Quaternion standardRotation;
+    }
+
+    [SerializeField] private List<Vehicle> vehicles = new List<Vehicle>();
+
+    // Old single-vehicle fields: only read to move them into the vehicles list
+    [SerializeField, HideInInspector] private FishGeneralDataScriptable shipData;
+    [SerializeField, HideInInspector] private SpriteRenderer spriteRenderer;
 
 
     private IEnumerator rotateRoutine;
+    private Vehicle rotatingVehicle;
     [SerializeField] private float angleRange = 15f;
     [SerializeField] private float rotationRoutineSpeed = 80f;
-    private Quaternion standardSpriteRotation;
 
     private void Start()
     {
-        standardSpriteRotation = spriteRenderer.transform.localRotation;
+        foreach (var vehicle in vehicles)
+        {
+            if (vehicle.spriteRenderer != null)
+                vehicle.standardRotation = vehicle.spriteRenderer.transform.localRotation;
+        }
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        bool wasClicked = SaveSystem.GetItemClicked(shipData.title);
-        if (!wasClicked)
-        {
-            SaveSystem.SetItemClicked(shipData.title, true);
+        Vehicle vehicle = GetActiveVehicle();
+        if (vehicle == null)
+            return;
 
+        if (vehicle.data != null)
+        {
+            bool wasClicked = SaveSystem.GetItemClicked(vehicle.data.title);
+            if (!wasClicked)
+            {
+                SaveSystem.SetItemClicked(vehicle.data.title, true);
+
+            }
         }
 
         if (rotateRoutine != null)
         {
             StopCoroutine(rotateRoutine);
+            // The vehicle changed while the old one was still rotating: don't leave it tilted
+            if (rotatingVehicle != vehicle)
+                rotatingVehicle.spriteRenderer.transform.localRotation = rotatingVehicle.standardRotation;
         }
-        rotateRoutine = RotateSpriteRoutine();
+        rotatingVehicle = vehicle;
+        rotateRoutine = RotateSpriteRoutine(vehicle);
         StartCoroutine(rotateRoutine);
     }
 
-    private IEnumerator RotateSpriteRoutine()
+    private Vehicle GetActiveVehicle()
     {
-        Quaternion startRot = standardSpriteRotation;
+        foreach (var vehicle in vehicles)
+        {
+            if (vehicle.spriteRenderer != null && vehicle.spriteRenderer.gameObject.activeInHierarchy)
+                return vehicle;
+        }
+        return null;
+    }
+
+    private IEnumerator RotateSpriteRoutine(Vehicle vehicle)
+    {
+        Transform spriteTransform = vehicle.spriteRenderer.transform;
+        Quaternion startRot = vehicle.standardRotation;
 
         float[] angles = new float[] { -15f, 15f, -7f, 7f, -4f, 0f };
 
@@ -49,7 +87,7 @@ public class Ship : MonoBehaviour, IPointerClickHandler
             float currentSpeed = Mathf.Max(rotationRoutineSpeed * decayFactor, 5f); // clamp to avoid 0
 
             Quaternion targetRot = startRot * Quaternion.Euler(0f, 0f, angles[i]);
-            Quaternion fromRot = spriteRenderer.transform.localRotation;
+            Quaternion fromRot = spriteTransform.localRotation;
             float duration = Quaternion.Angle(fromRot, targetRot) / currentSpeed;
 
             float elapsed = 0f;
@@ -57,14 +95,28 @@ public class Ship : MonoBehaviour, IPointerClickHandler
             {
                 elapsed += Time.deltaTime;
                 float t = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(elapsed / duration));
-                spriteRenderer.transform.localRotation = Quaternion.Lerp(fromRot, targetRot, t);
+                spriteTransform.localRotation = Quaternion.Lerp(fromRot, targetRot, t);
                 yield return null;
             }
 
-            spriteRenderer.transform.localRotation = targetRot;
+            spriteTransform.localRotation = targetRot;
         }
 
-        spriteRenderer.transform.localRotation = startRot;
+        spriteTransform.localRotation = startRot;
     }
 
+    public void OnBeforeSerialize() { }
+
+    public void OnAfterDeserialize()
+    {
+        // Migration from the single-vehicle version: the old Ship becomes the first vehicle
+        if (vehicles == null)
+            vehicles = new List<Vehicle>();
+        if (vehicles.Count == 0 && spriteRenderer != null)
+        {
+            vehicles.Add(new Vehicle { spriteRenderer = spriteRenderer, data = shipData });
+            spriteRenderer = null;
+            shipData = null;
+        }
+    }
 }

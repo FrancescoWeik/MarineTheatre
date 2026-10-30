@@ -122,6 +122,46 @@ public static class BiomeSetupTool
         Debug.Log("[BiomeSetup] Fatto: MarineLogic aggiornato, AfricaLogic.prefab creato come variant, BiomeManager aggiunto. Controlla e salva la scena.");
     }
 
+    // Wraps Logic/Boat in a container moved by the biome transition (the Boat Animator animates the Boat
+    // position itself) and makes it swap Ship <-> Jeep while out of the screen
+    [MenuItem("Tools/Biomes/Setup Boat (one-shot)")]
+    private static void SetupBoat()
+    {
+        var scene = EditorSceneManager.GetActiveScene();
+        GameObject logic = scene.GetRootGameObjects().FirstOrDefault(g => g.name == "Logic");
+        Transform boat = logic != null ? logic.transform.Find("Boat") : null;
+        if (boat == null) { Fail("Non trovo 'Logic/Boat' nella scena aperta (il setup è già stato fatto?)."); return; }
+
+        Transform ship = boat.Find("Ship");
+        Transform jeep = boat.Find("Jeep");
+        if (ship == null || jeep == null) { Fail("Non trovo 'Ship' e 'Jeep' dentro 'Logic/Boat'."); return; }
+
+        GameObject container = new GameObject("BoatContainer");
+        Undo.RegisterCreatedObjectUndo(container, "Setup Boat");
+        container.transform.SetParent(logic.transform, false);
+        container.transform.SetSiblingIndex(boat.GetSiblingIndex());
+        // The container sits at zero, so the Boat keeps its local position
+        Undo.SetTransformParent(boat, container.transform, "Setup Boat");
+
+        BiomeTransitionElement element = Undo.AddComponent<BiomeTransitionElement>(container);
+        SerializedObject elementSerialized = new SerializedObject(element);
+        elementSerialized.FindProperty("bringToFrontOnExit").boolValue = false;
+        elementSerialized.ApplyModifiedPropertiesWithoutUndo();
+
+        // Same order as the BiomeManager biomes list: 0 = Marine, 1 = Africa
+        BiomeObjectSwapper swapper = Undo.AddComponent<BiomeObjectSwapper>(container);
+        SerializedObject swapperSerialized = new SerializedObject(swapper);
+        SerializedProperty objects = swapperSerialized.FindProperty("objectPerBiome");
+        objects.arraySize = 2;
+        objects.GetArrayElementAtIndex(0).objectReferenceValue = ship.gameObject;
+        objects.GetArrayElementAtIndex(1).objectReferenceValue = jeep.gameObject;
+        swapperSerialized.ApplyModifiedPropertiesWithoutUndo();
+
+        EditorSceneManager.MarkSceneDirty(scene);
+        Selection.activeGameObject = container;
+        Debug.Log("[BiomeSetup] Boat pronta: 'Logic/BoatContainer' con BiomeTransitionElement e BiomeObjectSwapper (Ship = Marine, Jeep = Africa). Salva la scena.");
+    }
+
     // Wraps each background layer in a moving container and adds the BiomeController to the biome root
     private static void SetupBiomeRoot(GameObject root)
     {
