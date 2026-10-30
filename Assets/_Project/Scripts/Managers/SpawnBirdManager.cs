@@ -46,14 +46,34 @@ public class SpawnBirdManager : MonoBehaviour
         currentDaySpawner = fishSpawners[0];
     }
 
+    private void OnEnable()
+    {
+        SubscribeToDayManager();
+    }
+
     private void Start()
     {
-        DayManager.Instance.onDayChanged.AddListener(OnDayChanged);
+        // Fallback: on scene load DayManager.Awake may run after this OnEnable
+        SubscribeToDayManager();
     }
 
     private void OnDisable()
     {
+        if (DayManager.Instance != null)
+            DayManager.Instance.onDayChanged.RemoveListener(OnDayChanged);
+    }
+
+    private void SubscribeToDayManager()
+    {
+        if (DayManager.Instance == null)
+            return;
+
+        // Remove first so calling this from both OnEnable and Start doesn't register it twice
         DayManager.Instance.onDayChanged.RemoveListener(OnDayChanged);
+        DayManager.Instance.onDayChanged.AddListener(OnDayChanged);
+
+        // The day may have changed while this spawner was disabled
+        OnDayChanged((int)DayManager.Instance.currentDayType);
     }
 
     private void Update()
