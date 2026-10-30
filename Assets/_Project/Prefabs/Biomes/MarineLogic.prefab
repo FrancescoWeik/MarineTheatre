@@ -29,9 +29,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2878131395616705232}
-  - {fileID: 941339953797938261}
-  - {fileID: 1534414599829757129}
+  - {fileID: 3088349617448326756}
+  - {fileID: 3317310752568115781}
+  - {fileID: 2808675724729645526}
   - {fileID: 6331708234526682931}
   m_Father: {fileID: 4050046466751552991}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -448,7 +448,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4092458909965350183}
-  m_Father: {fileID: 8447338752404302692}
+  m_Father: {fileID: 3088349617448326756}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3101962530517488551
 MonoBehaviour:
@@ -564,6 +564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4050046466751552991}
+  - component: {fileID: 6877684408373598904}
   m_Layer: 0
   m_Name: MarineLogic
   m_TagString: Untagged
@@ -591,6 +592,31 @@ Transform:
   - {fileID: 6919144321056432882}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6877684408373598904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2286246416684463816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4754faeb09e52146b9fc9b856f4d271, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeController
+  transitionSteps:
+  - element: {fileID: 4187854585464355869}
+    exitDelay: 0
+    enterDelay: 0
+  - element: {fileID: 3777137019160332907}
+    exitDelay: 0.25
+    enterDelay: 0.25
+  - element: {fileID: 489140378463380967}
+    exitDelay: 0.45
+    enterDelay: 0.45
+  biomeLogic:
+  - {fileID: 2235329555677812575}
+  - {fileID: 2359318422448159255}
 --- !u!1 &2320521308899803742
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,6 +1055,59 @@ Transform:
   - {fileID: 2551625078372310998}
   m_Father: {fileID: 6919144321056432882}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3625170214050428732
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2808675724729645526}
+  - component: {fileID: 489140378463380967}
+  m_Layer: 0
+  m_Name: Layer-3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2808675724729645526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625170214050428732}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1534414599829757129}
+  m_Father: {fileID: 8447338752404302692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &489140378463380967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3625170214050428732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd52027af1b178841a50964aef2e7310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeTransitionElement
+  anticipationHeight: 1
+  anticipationTime: 0.15
+  exitTime: 0.35
+  enterTime: 0.5
+  enterOvershoot: 0.5
+  settleTime: 0.15
+  offScreenDistance: 40
+  bringToFrontOnExit: 1
 --- !u!1 &3998408183483751397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,7 +1643,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7480558963804696672}
-  m_Father: {fileID: 8447338752404302692}
+  m_Father: {fileID: 3317310752568115781}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6620940511581424808
 MonoBehaviour:
@@ -2001,6 +2080,59 @@ MonoBehaviour:
   maxPossibleRotation: 10
   minFrenzyModeSpawnTime: 0.2
   maxFrenzyModeSpawnTime: 0.9
+--- !u!1 &7182665673437398520
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3317310752568115781}
+  - component: {fileID: 3777137019160332907}
+  m_Layer: 0
+  m_Name: Layer-2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3317310752568115781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182665673437398520}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 941339953797938261}
+  m_Father: {fileID: 8447338752404302692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3777137019160332907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7182665673437398520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd52027af1b178841a50964aef2e7310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeTransitionElement
+  anticipationHeight: 1
+  anticipationTime: 0.15
+  exitTime: 0.35
+  enterTime: 0.5
+  enterOvershoot: 0.5
+  settleTime: 0.15
+  offScreenDistance: 40
+  bringToFrontOnExit: 1
 --- !u!1 &7269115691056963633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,7 +2255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5030624452308294814}
-  m_Father: {fileID: 8447338752404302692}
+  m_Father: {fileID: 2808675724729645526}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3868830546771764094
 MonoBehaviour:
@@ -2371,6 +2503,59 @@ MonoBehaviour:
   - {fileID: 8118412170350461335}
   dayRangeIslandSpawn: {x: 4, y: 6}
   timeToMove: 30
+--- !u!1 &9196614126031257246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3088349617448326756}
+  - component: {fileID: 4187854585464355869}
+  m_Layer: 0
+  m_Name: Layer-1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3088349617448326756
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9196614126031257246}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2878131395616705232}
+  m_Father: {fileID: 8447338752404302692}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4187854585464355869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9196614126031257246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd52027af1b178841a50964aef2e7310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeTransitionElement
+  anticipationHeight: 1
+  anticipationTime: 0.15
+  exitTime: 0.35
+  enterTime: 0.5
+  enterOvershoot: 0.5
+  settleTime: 0.15
+  offScreenDistance: 40
+  bringToFrontOnExit: 1
 --- !u!1001 &1608794234671696486
 PrefabInstance:
   m_ObjectHideFlags: 0
