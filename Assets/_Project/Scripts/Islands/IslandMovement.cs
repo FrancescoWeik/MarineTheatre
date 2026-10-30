@@ -19,10 +19,39 @@ public class IslandMovement : MonoBehaviour
     private int currentIslandIndex = 0;
     private bool isIslandMoving = false;
 
+    private void OnEnable()
+    {
+        SubscribeToDayManager();
+    }
+
     private void Start()
     {
         currentIslandIndex = 0;
         daysToWait = RandomizeDaysValue();
+        // Fallback: on scene load DayManager.Awake may run after this OnEnable
+        SubscribeToDayManager();
+    }
+
+    private void OnDisable()
+    {
+        if (DayManager.Instance != null)
+            DayManager.Instance.onDayChanged.RemoveListener(OnDayChanged);
+
+        // Disabling kills the coroutine: if an island was moving, reset it or no island would ever move again
+        if (isIslandMoving)
+        {
+            StopAllCoroutines();
+            FinishIslandMovement();
+        }
+    }
+
+    private void SubscribeToDayManager()
+    {
+        if (DayManager.Instance == null)
+            return;
+
+        // Remove first so calling this from both OnEnable and Start doesn't register it twice
+        DayManager.Instance.onDayChanged.RemoveListener(OnDayChanged);
         DayManager.Instance.onDayChanged.AddListener(OnDayChanged);
     }
 
@@ -51,6 +80,11 @@ public class IslandMovement : MonoBehaviour
             yield return null;
         }
 
+        FinishIslandMovement();
+    }
+
+    private void FinishIslandMovement()
+    {
         //Reset the position
         transform.position = startPoint.position;
         currentDaysPassed = 0;
