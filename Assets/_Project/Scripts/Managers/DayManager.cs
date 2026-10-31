@@ -19,15 +19,19 @@ public class DayManager : MonoBehaviour
     [SerializeField] private SpriteRenderer background;
     [SerializeField] private List<SpriteRenderer> seaBackgrounds = new List<SpriteRenderer>();
 
-    [SerializeField] public List<Color> bacgkroundDayColors = new List<Color>();
-    [SerializeField] public List<Color> spriteDayColors = new List<Color>();
-
-
+    // The day colors now come from the current biome (BiomeController > BiomeDayColors)
     [SerializeField] public float dayTransitionTime = 0.5f;
+    [Tooltip("Duration of the color change when the biome changes")]
+    [SerializeField] private float biomeColorTransitionTime = 1f;
 
     public UnityEvent<int> onDayChanged;
 
     public DayType currentDayType = DayType.Sunny;
+
+    private Coroutine colorRoutine;
+
+    private BiomeDayColors CurrentColors =>
+        BiomeManager.Instance != null && BiomeManager.Instance.CurrentBiome != null ? BiomeManager.Instance.CurrentBiome.DayColors : null;
     private void Awake()
     {
         // If an instance already exists and it's not this one, destroy this one
@@ -44,28 +48,75 @@ public class DayManager : MonoBehaviour
         // DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        if (BiomeManager.Instance != null)
+            BiomeManager.Instance.onBiomeChanged.AddListener(OnBiomeChanged);
+
+        // Start with the colors of the start biome
+        int day = (int)currentDayType;
+        background.color = GetBackgroundColor(day);
+        foreach (var sea in seaBackgrounds)
+            sea.color = GetSpriteColor(day);
+    }
+
     public void ChangeToSunny()
     {
-        currentDayType = DayType.Sunny;
-        onDayChanged.Invoke(0);
-        StartCoroutine(ChangeBackgroundColor(bacgkroundDayColors[0], spriteDayColors[0]));
+        SetDay(DayType.Sunny);
     }
 
     public void ChangeToHalfMoon()
     {
-        currentDayType = DayType.HalfMoon;
-        onDayChanged.Invoke(1);
-        StartCoroutine(ChangeBackgroundColor(bacgkroundDayColors[1], spriteDayColors[1]));
+        SetDay(DayType.HalfMoon);
     }
 
     public void ChangeToFoolMoon()
     {
-        currentDayType = DayType.FullMoon;
-        onDayChanged.Invoke(2);
-        StartCoroutine(ChangeBackgroundColor(bacgkroundDayColors[2], spriteDayColors[2]));
+        SetDay(DayType.FullMoon);
     }
 
-    private IEnumerator ChangeBackgroundColor(Color endColor, Color seaNewColor)
+    public Color GetBackgroundColor(int day)
+    {
+        BiomeDayColors colors = CurrentColors;
+        if (colors == null || day >= colors.backgroundDayColors.Count)
+        {
+            Debug.LogWarning("[DayManager] The current biome has no BiomeDayColors (or not enough colors): background color unchanged.");
+            return background.color;
+        }
+        return colors.backgroundDayColors[day];
+    }
+
+    public Color GetSpriteColor(int day)
+    {
+        BiomeDayColors colors = CurrentColors;
+        if (colors == null || day >= colors.spriteDayColors.Count)
+            return Color.white;
+        return colors.spriteDayColors[day];
+    }
+
+    private void SetDay(DayType dayType)
+    {
+        currentDayType = dayType;
+        onDayChanged.Invoke((int)dayType);
+        LerpToCurrentColors(dayTransitionTime);
+    }
+
+    private void OnBiomeChanged(int biomeIndex)
+    {
+        LerpToCurrentColors(biomeColorTransitionTime);
+    }
+
+    private void LerpToCurrentColors(float duration)
+    {
+        // A new change replaces the running one, so two routines don't write the same colors
+        if (colorRoutine != null)
+            StopCoroutine(colorRoutine);
+
+        int day = (int)currentDayType;
+        colorRoutine = StartCoroutine(ChangeBackgroundColor(GetBackgroundColor(day), GetSpriteColor(day), duration));
+    }
+
+    private IEnumerator ChangeBackgroundColor(Color endColor, Color seaNewColor, float duration)
     {
         //Debug.LogError("Change Background routine");
         float elapsedTime = 0f;
@@ -74,19 +125,22 @@ public class DayManager : MonoBehaviour
         if (seaBackgrounds.Count!=0)
             seaStartColor = seaBackgrounds[0].color;
 
-        while (elapsedTime < dayTransitionTime)
+        while (elapsedTime < duration)
         {
-            background.color = Color.Lerp(startColor, endColor, elapsedTime / dayTransitionTime);
+            background.color = Color.Lerp(startColor, endColor, elapsedTime / duration);
 
 
             foreach(var sea in seaBackgrounds)
             {
-                sea.color = Color.Lerp(seaStartColor, seaNewColor, elapsedTime / dayTransitionTime);
+                sea.color = Color.Lerp(seaStartColor, seaNewColor, elapsedTime / duration);
             }
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
         background.color = endColor;
+        foreach (var sea in seaBackgrounds)
+            sea.color = seaNewColor;
+        colorRoutine = null;
     }
 }

@@ -17,6 +17,10 @@ public class BiomeController : MonoBehaviour
         public float enterDelay;
     }
 
+    [Header("Colors of the shared background for each day")]
+    [SerializeField] private BiomeDayColors dayColors;
+    public BiomeDayColors DayColors => dayColors;
+
     [Header("Elements that move in/out of the screen")]
     [SerializeField] private List<TransitionStep> transitionSteps = new List<TransitionStep>();
 

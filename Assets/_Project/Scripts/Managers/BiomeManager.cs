@@ -19,6 +19,7 @@ public class BiomeManager : MonoBehaviour
     public UnityEvent<int> onBiomeChanged;
 
     public int CurrentBiomeIndex { get; private set; }
+    public BiomeController CurrentBiome => CurrentBiomeIndex >= 0 && CurrentBiomeIndex < biomes.Count ? biomes[CurrentBiomeIndex] : null;
     public bool IsChanging { get; private set; }
 
     private void Awake()

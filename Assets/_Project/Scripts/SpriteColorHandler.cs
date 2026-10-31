@@ -10,7 +10,7 @@ public class SpriteColorHandler : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.color = DayManager.Instance.spriteDayColors[0];
+        spriteRenderer.color = DayManager.Instance.GetSpriteColor((int)DayManager.Instance.currentDayType);
         DayManager.Instance.onDayChanged.AddListener(OnDayChanged);
     }
 
@@ -24,7 +24,7 @@ public class SpriteColorHandler : MonoBehaviour
     {
         float elapsedTime = 0f;
         Color startColor = spriteRenderer.color;
-        Color endColor = DayManager.Instance.spriteDayColors[day];
+        Color endColor = DayManager.Instance.GetSpriteColor(day);
         while (elapsedTime < DayManager.Instance.dayTransitionTime)
         {
             spriteRenderer.color = Color.Lerp(startColor, endColor, elapsedTime / DayManager.Instance.dayTransitionTime);
