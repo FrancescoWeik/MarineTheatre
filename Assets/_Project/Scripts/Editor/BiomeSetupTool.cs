@@ -20,6 +20,8 @@ public static class BiomeSetupTool
     [MenuItem("Tools/Biomes/Setup Biomes (one-shot)")]
     private static void Setup()
     {
+        if (IsInPlayMode()) return;
+
         // ---- Checks: nothing is modified until all of them pass ----
         GameObject marineAsset = AssetDatabase.LoadAssetAtPath<GameObject>(MarinePrefabPath);
         if (marineAsset == null) { Fail($"Non trovo {MarinePrefabPath}."); return; }
@@ -127,6 +129,8 @@ public static class BiomeSetupTool
     [MenuItem("Tools/Biomes/Setup Boat (one-shot)")]
     private static void SetupBoat()
     {
+        if (IsInPlayMode()) return;
+
         var scene = EditorSceneManager.GetActiveScene();
         GameObject logic = scene.GetRootGameObjects().FirstOrDefault(g => g.name == "Logic");
         Transform boat = logic != null ? logic.transform.Find("Boat") : null;
@@ -160,6 +164,78 @@ public static class BiomeSetupTool
         EditorSceneManager.MarkSceneDirty(scene);
         Selection.activeGameObject = container;
         Debug.Log("[BiomeSetup] Boat pronta: 'Logic/BoatContainer' con BiomeTransitionElement e BiomeObjectSwapper (Ship = Marine, Jeep = Africa). Salva la scena.");
+    }
+
+    // Moves the SunMoon out of the MarineLogic prefab into Logic (one shared SunMoon, like the Boat)
+    // and assigns the BiomeSunMoonData of each biome
+    [MenuItem("Tools/Biomes/Setup SunMoon (one-shot)")]
+    private static void SetupSunMoon()
+    {
+        if (IsInPlayMode()) return;
+
+        BiomeSunMoonData marineData = AssetDatabase.LoadAssetAtPath<BiomeSunMoonData>("Assets/_Project/ScriptableData/BiomeSunMoon/MarineSunMoonData.asset");
+        BiomeSunMoonData africaData = AssetDatabase.LoadAssetAtPath<BiomeSunMoonData>("Assets/_Project/ScriptableData/BiomeSunMoon/AfricaSunMoonData.asset");
+        if (marineData == null || africaData == null) { Fail("Non trovo MarineSunMoonData / AfricaSunMoonData in ScriptableData/BiomeSunMoon."); return; }
+
+        var scene = EditorSceneManager.GetActiveScene();
+        GameObject logic = scene.GetRootGameObjects().FirstOrDefault(g => g.name == "Logic");
+        if (logic == null) { Fail("Non trovo il GameObject 'Logic' nella scena aperta."); return; }
+        if (logic.transform.Find("SunMoon") != null) { Fail("'Logic/SunMoon' esiste già: il setup è già stato fatto?"); return; }
+
+        Transform marine = logic.transform.Find("MarineLogic");
+        Transform sunMoon = marine != null ? marine.Find("SunMoon") : null;
+        if (sunMoon == null) { Fail("Non trovo 'Logic/MarineLogic/SunMoon'."); return; }
+
+        if (!EditorUtility.DisplayDialog("Setup SunMoon",
+            "Questo tool sposta il SunMoon in 'Logic', lo rimuove dal prefab MarineLogic (e quindi dalla variant Africa) e collega i BiomeSunMoonData.\n\n" +
+            "Ctrl+Z NON basta per annullarlo: assicurati di aver salvato la scena e fatto un commit prima di procedere.",
+            "Procedi", "Annulla"))
+            return;
+
+        // 1. Shared copy under Logic: a plain scene object, no longer part of the biome prefab
+        GameObject shared = Object.Instantiate(sunMoon.gameObject, logic.transform, true);
+        shared.name = "SunMoon";
+        Transform boat = logic.transform.Find("BoatContainer");
+        if (boat != null)
+            shared.transform.SetSiblingIndex(boat.GetSiblingIndex() + 1);
+
+        // 2. MarineLogic prefab: remove its SunMoon (the africa variant loses it too) and assign its data
+        GameObject contents = PrefabUtility.LoadPrefabContents(MarinePrefabPath);
+        try
+        {
+            Transform prefabSunMoon = contents.transform.Find("SunMoon");
+            if (prefabSunMoon != null)
+                Object.DestroyImmediate(prefabSunMoon.gameObject);
+            SetSunMoonData(contents, marineData);
+            PrefabUtility.SaveAsPrefabAsset(contents, MarinePrefabPath);
+        }
+        finally
+        {
+            PrefabUtility.UnloadPrefabContents(contents);
+        }
+
+        // 3. AfricaLogic variant: its own data
+        contents = PrefabUtility.LoadPrefabContents(AfricaPrefabPath);
+        try
+        {
+            SetSunMoonData(contents, africaData);
+            PrefabUtility.SaveAsPrefabAsset(contents, AfricaPrefabPath);
+        }
+        finally
+        {
+            PrefabUtility.UnloadPrefabContents(contents);
+        }
+
+        EditorSceneManager.MarkSceneDirty(scene);
+        Selection.activeGameObject = shared;
+        Debug.Log("[BiomeSetup] SunMoon pronto: ora è 'Logic/SunMoon', condiviso tra i biomi. MarineSunMoonData e AfricaSunMoonData collegati. Salva la scena.");
+    }
+
+    private static void SetSunMoonData(GameObject biomeRoot, BiomeSunMoonData data)
+    {
+        SerializedObject controllerSerialized = new SerializedObject(biomeRoot.GetComponent<BiomeController>());
+        controllerSerialized.FindProperty("sunMoonData").objectReferenceValue = data;
+        controllerSerialized.ApplyModifiedPropertiesWithoutUndo();
     }
 
     // Wraps each background layer in a moving container and adds the BiomeController to the biome root
@@ -302,6 +378,15 @@ public static class BiomeSetupTool
             else if (targetComponent is Renderer renderer)
                 renderer.enabled = false;
         }
+    }
+
+    // Scene changes made in Play mode are lost when exiting it
+    private static bool IsInPlayMode()
+    {
+        if (!EditorApplication.isPlaying)
+            return false;
+        Fail("Esci dal Play mode prima di lanciare il setup.");
+        return true;
     }
 
     private static void Fail(string message)

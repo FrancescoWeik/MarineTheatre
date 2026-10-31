@@ -56,6 +56,10 @@ public class IslandMovement : MonoBehaviour
     }
 
     private void OnDayChanged(int dayType) {
+        // The reset to the morning on a biome change is not a day passing
+        if (BiomeManager.Instance != null && BiomeManager.Instance.IsChanging)
+            return;
+
         if (!isIslandMoving)
         {
             currentDaysPassed++;

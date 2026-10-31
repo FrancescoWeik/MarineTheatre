@@ -103,6 +103,13 @@ public class DayManager : MonoBehaviour
 
     private void OnBiomeChanged(int biomeIndex)
     {
+        // Every biome starts from the morning. BiomeManager.IsChanging is true here,
+        // so listeners can tell this reset from a real day passing
+        if (currentDayType != DayType.Sunny)
+        {
+            currentDayType = DayType.Sunny;
+            onDayChanged.Invoke((int)DayType.Sunny);
+        }
         LerpToCurrentColors(biomeColorTransitionTime);
     }
 

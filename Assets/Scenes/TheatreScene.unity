@@ -1886,15 +1886,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   background: {fileID: 527705757}
   seaBackgrounds: []
-  bacgkroundDayColors:
-  - {r: 0.5568628, g: 0.7294118, b: 1, a: 1}
-  - {r: 0.19384116, g: 0.31672683, b: 0.509434, a: 1}
-  - {r: 0.04370868, g: 0.109953076, b: 0.21383637, a: 1}
-  spriteDayColors:
-  - {r: 1, g: 1, b: 1, a: 1}
-  - {r: 0.735849, g: 0.735849, b: 0.735849, a: 1}
-  - {r: 0.4, g: 0.4, b: 0.4, a: 1}
   dayTransitionTime: 0.5
+  biomeColorTransitionTime: 1
   onDayChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -7614,6 +7607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6877684408373598904, guid: 4e9751a28707d934184085f7cc079c31, type: 3}
+      propertyPath: dayColors
+      value: 
+      objectReference: {fileID: 11400000, guid: cb7b3012e7f8ed5d5d049219ea6209e5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7901,6 +7898,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -2.6
       objectReference: {fileID: 0}
+    - target: {fileID: 6729661373618262763, guid: fc73e8ff213e6024dabdad030eb5dd66, type: 3}
+      propertyPath: dayColors
+      value: 
+      objectReference: {fileID: 11400000, guid: bd26dc02a4077d8edf8d00911f475606, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

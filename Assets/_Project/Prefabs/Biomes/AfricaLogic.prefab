@@ -243,6 +243,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d27d0a181d028b14bb8f2009c08e083e, type: 3}
+    - target: {fileID: 6877684408373598904, guid: 4e9751a28707d934184085f7cc079c31, type: 3}
+      propertyPath: sunMoonData
+      value: 
+      objectReference: {fileID: 11400000, guid: ca454ec775ded2617de86b194f8e3644, type: 2}
     - target: {fileID: 7480558963804696672, guid: 4e9751a28707d934184085f7cc079c31, type: 3}
       propertyPath: m_LocalPosition.y
       value: -6.8

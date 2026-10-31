@@ -21,6 +21,10 @@ public class BiomeController : MonoBehaviour
     [SerializeField] private BiomeDayColors dayColors;
     public BiomeDayColors DayColors => dayColors;
 
+    [Header("Sun/moon sprites and bestiary data for each day")]
+    [SerializeField] private BiomeSunMoonData sunMoonData;
+    public BiomeSunMoonData SunMoonData => sunMoonData;
+
     [Header("Elements that move in/out of the screen")]
     [SerializeField] private List<TransitionStep> transitionSteps = new List<TransitionStep>();
 

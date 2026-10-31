@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd9efb0eef2e67aa2b3863030524c899, type: 3}
+  m_Name: AfricaSunMoonData
+  m_EditorClassIdentifier: Assembly-CSharp::BiomeSunMoonData
+  days:
+  - sprite: {fileID: -205123597, guid: e8f897281693de8489638c8c7bde2b16, type: 3}
+    bestiaryData: {fileID: 11400000, guid: e5f10380e1d45d64a89db70a1c5f03ae, type: 2}
+  - sprite: {fileID: 326815916, guid: e8f897281693de8489638c8c7bde2b16, type: 3}
+    bestiaryData: {fileID: 11400000, guid: f371e400704968c41821a73c54624bda, type: 2}
+  - sprite: {fileID: -1256004058, guid: e8f897281693de8489638c8c7bde2b16, type: 3}
+    bestiaryData: {fileID: 11400000, guid: 39d1dbe795c88a248a5c97be91505840, type: 2}
