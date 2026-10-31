@@ -8188,6 +8188,83 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e9751a28707d934184085f7cc079c31, type: 3}
+--- !u!1001 &3164593464655904569
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1090171520383451740, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: fishPossibleMovements.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090171520383451740, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: 'fishPossibleMovements.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a0d70c61b72430d46b22f928931e85e3, type: 2}
+    - target: {fileID: 1090171520383451740, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: 'fishPossibleMovements.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e56dc952f2ce61943992c606ca238cd3, type: 2}
+    - target: {fileID: 1090171520383451740, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: 'fishPossibleMovements.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: a4863e6dc0edf54489f7207756f46423, type: 2}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -26.87715
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 125.15534
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3537009234334038432, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905631038529250884, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_Name
+      value: Lion
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905631038529250884, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
 --- !u!1001 &3763386947833303892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8379,6 +8456,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 1385085856}
     m_Modifications:
     - target: {fileID: 2095161985647599372, guid: fc73e8ff213e6024dabdad030eb5dd66, type: 3}
+      propertyPath: 'fishSpawners.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b0a9efb73fbd7a64a915565d938e6f62, type: 2}
+    - target: {fileID: 2095161985647599372, guid: fc73e8ff213e6024dabdad030eb5dd66, type: 3}
+      propertyPath: 'fishSpawners.Array.data[1]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 482ce8a479329f74a9e4eba82d352ea9, type: 2}
+    - target: {fileID: 2095161985647599372, guid: fc73e8ff213e6024dabdad030eb5dd66, type: 3}
+      propertyPath: 'fishSpawners.Array.data[2]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 9aa0ef83372f4b349b4f454d0a062fb2, type: 2}
+    - target: {fileID: 2095161985647599372, guid: fc73e8ff213e6024dabdad030eb5dd66, type: 3}
       propertyPath: 'spawnContainers.Array.data[0]'
       value: 
       objectReference: {fileID: 1478151705}
@@ -8496,3 +8585,4 @@ SceneRoots:
   - {fileID: 1355622374}
   - {fileID: 1959419403}
   - {fileID: 574174649}
+  - {fileID: 3164593464655904569}
