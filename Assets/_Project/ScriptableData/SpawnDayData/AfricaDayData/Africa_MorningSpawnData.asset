@@ -14,10 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FishSpawnerDayStructure
   highChanceFishSpawn:
   - {fileID: 7905631038529250884, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+  - {fileID: 7905631038529250884, guid: 14f86ba8656913c9bfa52449b8b0929a, type: 3}
+  - {fileID: 7905631038529250884, guid: e355888c53ff7241042293a777d87bbf, type: 3}
+  - {fileID: 7905631038529250884, guid: f94a4f8b8d4ba7ef1efccd7ab4fea6d1, type: 3}
+  - {fileID: 7905631038529250884, guid: 3098dcfa16a4ef0d3d057e88d4065423, type: 3}
+  - {fileID: 7905631038529250884, guid: 3a1c2ed3b9b9c02947da3ad1bdac9461, type: 3}
+  - {fileID: 7905631038529250884, guid: 0a04a6834b9361fb9045097b20b56245, type: 3}
+  - {fileID: 7905631038529250884, guid: aa695edb793e5d8a4096c834331bfeb7, type: 3}
+  - {fileID: 7905631038529250884, guid: e013d8dfcc5af91f467780ac9a43a12b, type: 3}
+  - {fileID: 7905631038529250884, guid: 719d225ad2f96fe1313977f2ad58c0ca, type: 3}
   mediumChanceFishSpawn:
   - {fileID: 7905631038529250884, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+  - {fileID: 7905631038529250884, guid: 14f86ba8656913c9bfa52449b8b0929a, type: 3}
+  - {fileID: 7905631038529250884, guid: e355888c53ff7241042293a777d87bbf, type: 3}
+  - {fileID: 7905631038529250884, guid: f94a4f8b8d4ba7ef1efccd7ab4fea6d1, type: 3}
+  - {fileID: 7905631038529250884, guid: 3098dcfa16a4ef0d3d057e88d4065423, type: 3}
+  - {fileID: 7905631038529250884, guid: 3a1c2ed3b9b9c02947da3ad1bdac9461, type: 3}
+  - {fileID: 7905631038529250884, guid: 0a04a6834b9361fb9045097b20b56245, type: 3}
+  - {fileID: 7905631038529250884, guid: aa695edb793e5d8a4096c834331bfeb7, type: 3}
+  - {fileID: 7905631038529250884, guid: e013d8dfcc5af91f467780ac9a43a12b, type: 3}
+  - {fileID: 7905631038529250884, guid: 719d225ad2f96fe1313977f2ad58c0ca, type: 3}
   lowChanceFishSpawn:
   - {fileID: 7905631038529250884, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+  - {fileID: 7905631038529250884, guid: 14f86ba8656913c9bfa52449b8b0929a, type: 3}
+  - {fileID: 7905631038529250884, guid: e355888c53ff7241042293a777d87bbf, type: 3}
+  - {fileID: 7905631038529250884, guid: f94a4f8b8d4ba7ef1efccd7ab4fea6d1, type: 3}
+  - {fileID: 7905631038529250884, guid: 3098dcfa16a4ef0d3d057e88d4065423, type: 3}
+  - {fileID: 7905631038529250884, guid: 3a1c2ed3b9b9c02947da3ad1bdac9461, type: 3}
+  - {fileID: 7905631038529250884, guid: 0a04a6834b9361fb9045097b20b56245, type: 3}
+  - {fileID: 7905631038529250884, guid: aa695edb793e5d8a4096c834331bfeb7, type: 3}
+  - {fileID: 7905631038529250884, guid: e013d8dfcc5af91f467780ac9a43a12b, type: 3}
+  - {fileID: 7905631038529250884, guid: 719d225ad2f96fe1313977f2ad58c0ca, type: 3}
   highChancePercentage: 60
   mediumChancePercentage: 30
   lowChancePercentage: 10
