@@ -13,11 +13,14 @@ MonoBehaviour:
   m_Name: Africa_NightSpawnData
   m_EditorClassIdentifier: Assembly-CSharp::FishSpawnerDayStructure
   highChanceFishSpawn:
+  - {fileID: 6624544902702393018, guid: f2fe4d260cea8d34a85e0216c2cdd626, type: 3}
   - {fileID: 7905631038529250884, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
   mediumChanceFishSpawn:
   - {fileID: 7905631038529250884, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+  - {fileID: 6624544902702393018, guid: f2fe4d260cea8d34a85e0216c2cdd626, type: 3}
   lowChanceFishSpawn:
   - {fileID: 7905631038529250884, guid: 8ea23e3de2af4934a989c715d1e87ee3, type: 3}
+  - {fileID: 6624544902702393018, guid: f2fe4d260cea8d34a85e0216c2cdd626, type: 3}
   highChancePercentage: 60
   mediumChancePercentage: 30
   lowChancePercentage: 10
