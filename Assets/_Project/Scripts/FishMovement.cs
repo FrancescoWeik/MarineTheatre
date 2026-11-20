@@ -40,10 +40,37 @@ public class FishMovement : MonoBehaviour, IPointerClickHandler
     private Quaternion standardSpriteRotation;
 
 
+    private bool exitingBiome = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rotationRoutineSpeed = 80f;
+    }
+
+    private void OnEnable()
+    {
+        if (BiomeManager.Instance != null)
+            BiomeManager.Instance.onBiomeChanged.AddListener(OnBiomeChanged);
+    }
+
+    private void OnDisable()
+    {
+        if (BiomeManager.Instance != null)
+            BiomeManager.Instance.onBiomeChanged.RemoveListener(OnBiomeChanged);
+    }
+
+    // The biome is changing: this animal belongs to the old one, it falls out of the screen to leave room to the new animals
+    private void OnBiomeChanged(int biomeIndex)
+    {
+        if (exitingBiome)
+            return;
+        exitingBiome = true;
+
+        StopAllCoroutines();
+        if (spriteRenderer != null && rotateRoutine != null)
+            spriteRenderer.transform.localRotation = standardSpriteRotation;
+        StartCoroutine(BiomeExitMotion.ExitDownAndDestroy(transform));
     }
 
     public void StartMoving(int direction)
