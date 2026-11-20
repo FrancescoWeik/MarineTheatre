@@ -27,8 +27,10 @@ public class RhynoHerdMember : MonoBehaviour, IPointerClickHandler
     [Tooltip("Small hops while running")]
     [SerializeField] private float runHopHeight = 0.2f;
     [SerializeField] private float runHopSpeed = 14f;
-    [Tooltip("Local position it takes in the herd once calm")]
-    [SerializeField] private Vector2 herdPosition = new Vector2(3.6f, 0.3f);
+    [Tooltip("Local position it takes in the herd once calm: behind the others and a bit higher")]
+    [SerializeField] private Vector2 herdPosition = new Vector2(-0.03f, 2.25f);
+    [Tooltip("Z tilt it takes in the herd once calm (degrees)")]
+    [SerializeField] private float herdTilt = 0f;
     [SerializeField] private float joinSpeed = 4f;
 
     private State state;
@@ -96,8 +98,16 @@ public class RhynoHerdMember : MonoBehaviour, IPointerClickHandler
                 Vector3 target = new Vector3(herdPosition.x, herdPosition.y, basePosition.z);
                 if (!Mathf.Approximately(target.x, basePosition.x))
                     Face(target.x > basePosition.x ? 1 : -1);
+                float startDistance = Vector3.Distance(basePosition, target);
                 basePosition = Vector3.MoveTowards(basePosition, target, joinSpeed * Time.deltaTime);
                 transform.localPosition = basePosition + Vector3.up * RunHop();
+                // Leans into its herd pose while getting there
+                if (startDistance > 0f)
+                {
+                    Quaternion herdRotation = Quaternion.Euler(0f, 0f, herdTilt);
+                    transform.localRotation = Quaternion.Slerp(transform.localRotation, herdRotation,
+                        1f - Vector3.Distance(basePosition, target) / startDistance);
+                }
 
                 if (basePosition == target)
                     CalmDown();
@@ -110,6 +120,7 @@ public class RhynoHerdMember : MonoBehaviour, IPointerClickHandler
     {
         state = State.Calm;
         Face(1);
+        transform.localRotation = Quaternion.Euler(0f, 0f, herdTilt);
         if (calmSprite != null)
             spriteRenderer.sprite = calmSprite;
     }
