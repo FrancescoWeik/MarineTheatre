@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LionSpriteData
   m_EditorClassIdentifier: Assembly-CSharp::FishGeneralDataScriptable
   inPlaySprite: {fileID: 1602173428, guid: 88dcf2031cf4f4c49992070cd5da8e00, type: 3}
-  marketSprite: {fileID: 1602173428, guid: 88dcf2031cf4f4c49992070cd5da8e00, type: 3}
+  marketSprite: {fileID: -228574475, guid: fcd2d2a53bfc5c8489aab51e0cb194d6, type: 3}
   stickYOffset: -300
   description: 
   title: Leone

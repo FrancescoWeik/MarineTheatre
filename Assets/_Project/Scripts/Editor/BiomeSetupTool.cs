@@ -380,6 +380,116 @@ public static class BiomeSetupTool
         }
     }
 
+    // Builds RhynoHerd.prefab (variant of Rhyno Variant): the root keeps FishMovement to cross the screen,
+    // inside there are 2 calm rhinos and 1 agitated one, each with RhynoHerdMember.
+    // Then the herd replaces the single Rhyno Variant in every spawn list. The open scene is not touched.
+    [MenuItem("Tools/Animals/Create Rhyno Herd (one-shot)")]
+    private static void CreateRhynoHerd()
+    {
+        if (IsInPlayMode()) return;
+
+        const string rhynoPath = "Assets/_Project/Prefabs/Fishes/Africa/Rhyno Variant.prefab";
+        const string herdPath = "Assets/_Project/Prefabs/Fishes/Africa/RhynoHerd.prefab";
+
+        GameObject rhynoAsset = AssetDatabase.LoadAssetAtPath<GameObject>(rhynoPath);
+        if (rhynoAsset == null) { Fail($"Non trovo {rhynoPath}."); return; }
+        if (AssetDatabase.LoadAssetAtPath<GameObject>(herdPath) != null) { Fail("RhynoHerd.prefab esiste già."); return; }
+
+        Sprite calmSprite = AssetDatabase.LoadAllAssetsAtPath("Assets/_Project/Sprites/Africa/Simplerhyno.png").OfType<Sprite>().FirstOrDefault(s => s.name == "Rhyno");
+        Sprite agitatedSprite = AssetDatabase.LoadAllAssetsAtPath("Assets/_Project/Sprites/Africa/AfricaAnimals.png").OfType<Sprite>().FirstOrDefault(s => s.name == "AgitatedRhyno");
+        FishGeneralDataScriptable rhynoData = AssetDatabase.LoadAssetAtPath<FishGeneralDataScriptable>("Assets/_Project/Resources/FishGeneralData/AfricaGeneralData/RhynoSpriteData.asset");
+        if (calmSprite == null || agitatedSprite == null || rhynoData == null) { Fail("Non trovo le sprite 'Rhyno' / 'AgitatedRhyno' o RhynoSpriteData."); return; }
+
+        // Built in a preview scene so the open scene stays as it is
+        var previewScene = EditorSceneManager.NewPreviewScene();
+        GameObject herdAsset;
+        try
+        {
+            GameObject herd = (GameObject)PrefabUtility.InstantiatePrefab(rhynoAsset, previewScene);
+            herd.name = "RhynoHerd";
+            Transform rootSprite = herd.transform.Find("Fish");
+            Transform rootStick = herd.transform.Find("Wood");
+
+            // Positions and tilts taken from the RhynoSetup composition in the scene:
+            // two leaning rhinos in front, the agitated one ends up behind them and a bit higher
+            CreateHerdMember(herd.transform, rootSprite, rootStick, "Rhyno_Left", new Vector2(-1.49f, 0.35f), 9.65f, 2, calmSprite, rhynoData, null);
+            CreateHerdMember(herd.transform, rootSprite, rootStick, "Rhyno_Right", new Vector2(1.07f, 0.46f), -6.71f, 1, calmSprite, rhynoData, null);
+            CreateHerdMember(herd.transform, rootSprite, rootStick, "Rhyno_Agitated", new Vector2(5.12f, 2.83f), 0f, 0, agitatedSprite, rhynoData, calmSprite);
+
+            // The root only moves the herd: its own rhino and click area are not used
+            rootSprite.gameObject.SetActive(false);
+            rootStick.gameObject.SetActive(false);
+            herd.GetComponent<BoxCollider2D>().enabled = false;
+
+            // Saving an instance root creates a Prefab Variant of Rhyno Variant
+            herdAsset = PrefabUtility.SaveAsPrefabAsset(herd, herdPath);
+        }
+        finally
+        {
+            EditorSceneManager.ClosePreviewScene(previewScene);
+        }
+        if (herdAsset == null) { Fail("Salvataggio di RhynoHerd.prefab fallito, guarda la Console."); return; }
+
+        // The herd takes the place of the single rhino in the spawn lists
+        int replaced = 0;
+        foreach (string guid in AssetDatabase.FindAssets("t:FishSpawnerDayStructure"))
+        {
+            FishSpawnerDayStructure spawnData = AssetDatabase.LoadAssetAtPath<FishSpawnerDayStructure>(AssetDatabase.GUIDToAssetPath(guid));
+            SerializedObject spawnSerialized = new SerializedObject(spawnData);
+            foreach (string listName in new[] { "highChanceFishSpawn", "mediumChanceFishSpawn", "lowChanceFishSpawn" })
+            {
+                SerializedProperty list = spawnSerialized.FindProperty(listName);
+                for (int i = 0; i < list.arraySize; i++)
+                {
+                    SerializedProperty entry = list.GetArrayElementAtIndex(i);
+                    if (entry.objectReferenceValue == rhynoAsset)
+                    {
+                        entry.objectReferenceValue = herdAsset;
+                        replaced++;
+                    }
+                }
+            }
+            spawnSerialized.ApplyModifiedPropertiesWithoutUndo();
+        }
+        AssetDatabase.SaveAssets();
+
+        Selection.activeObject = herdAsset;
+        Debug.Log($"[AnimalSetup] RhynoHerd.prefab creato. Sostituito il Rhyno singolo con il branco in {replaced} voci delle liste di spawn.");
+    }
+
+    // A rhino of the herd: container (click area + RhynoHerdMember) with a copy of the root sprite and stick inside
+    private static void CreateHerdMember(Transform herd, Transform rootSprite, Transform rootStick, string name, Vector2 localPosition,
+        float tilt, int sortingOrder, Sprite sprite, FishGeneralDataScriptable data, Sprite calmSprite)
+    {
+        GameObject member = new GameObject(name);
+        EditorSceneManager.MoveGameObjectToScene(member, herd.gameObject.scene);
+        member.transform.SetParent(herd, false);
+        member.transform.localPosition = localPosition;
+        member.transform.localRotation = Quaternion.Euler(0f, 0f, tilt);
+
+        GameObject memberSprite = Object.Instantiate(rootSprite.gameObject, member.transform);
+        memberSprite.name = rootSprite.name;
+        memberSprite.GetComponent<SpriteRenderer>().sprite = sprite;
+        GameObject memberStick = Object.Instantiate(rootStick.gameObject, member.transform);
+        memberStick.name = rootStick.name;
+
+        // Which rhino is drawn in front inside the herd
+        member.AddComponent<SortingGroup>().sortingOrder = sortingOrder;
+
+        BoxCollider2D clickArea = member.AddComponent<BoxCollider2D>();
+        clickArea.isTrigger = true;
+        clickArea.offset = sprite.bounds.center;
+        clickArea.size = sprite.bounds.size;
+
+        RhynoHerdMember herdMember = member.AddComponent<RhynoHerdMember>();
+        SerializedObject memberSerialized = new SerializedObject(herdMember);
+        memberSerialized.FindProperty("rhynoData").objectReferenceValue = data;
+        memberSerialized.FindProperty("spriteRenderer").objectReferenceValue = memberSprite.GetComponent<SpriteRenderer>();
+        memberSerialized.FindProperty("startsAgitated").boolValue = calmSprite != null;
+        memberSerialized.FindProperty("calmSprite").objectReferenceValue = calmSprite;
+        memberSerialized.ApplyModifiedPropertiesWithoutUndo();
+    }
+
     // Scene changes made in Play mode are lost when exiting it
     private static bool IsInPlayMode()
     {

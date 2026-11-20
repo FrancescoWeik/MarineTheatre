@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GenettaSpriteData
   m_EditorClassIdentifier: Assembly-CSharp::FishGeneralDataScriptable
   inPlaySprite: {fileID: -448374452, guid: 88dcf2031cf4f4c49992070cd5da8e00, type: 3}
-  marketSprite: {fileID: -448374452, guid: 88dcf2031cf4f4c49992070cd5da8e00, type: 3}
+  marketSprite: {fileID: -944459721, guid: fcd2d2a53bfc5c8489aab51e0cb194d6, type: 3}
   stickYOffset: -300
   description: 
   title: Genetta

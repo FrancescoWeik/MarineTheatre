@@ -12,6 +12,8 @@ public class Bestiary : MonoBehaviour
     FishGeneralDataScriptable[] allFishesData;
     private List<FishContainer> fishContainers = new List<FishContainer>();
     [SerializeField] private FishUIDetails fishDetails;
+    [Tooltip("Scroll of the grid, it goes back to the top every time the bestiary opens")]
+    [SerializeField] private ScrollRect scrollRect;
     private Canvas bestiaryCanvas;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -66,6 +68,11 @@ public class Bestiary : MonoBehaviour
     {
         bestiaryButton.enabled = true;
         bestiaryCanvas.enabled = true;
+        if (scrollRect != null)
+        {
+            scrollRect.StopMovement();
+            scrollRect.verticalNormalizedPosition = 1f;
+        }
         Curtains.Instance.onFinishClosing.RemoveListener(DisplayBestiary);
         Curtains.Instance.OpenCurtains();
     }
